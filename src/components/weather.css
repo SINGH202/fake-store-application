@@ -1,0 +1,16 @@
+.report{
+    border: 1px solid black;
+    width: 500px;
+    height: 400px;
+    margin: 50px auto ;
+
+}
+.city_name{
+    border:1px solid #000000;
+    margin: 5px;
+}
+.date{
+    border:1px solid #000000;
+    margin: 5px;
+
+}
