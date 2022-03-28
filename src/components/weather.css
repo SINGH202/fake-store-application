@@ -14,3 +14,20 @@
     margin: 5px;
 
 }
+.small_div{
+    display: flex;
+    border: 1px solid black;
+    margin: 0%;
+}
+.weather_icon{
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    border: 1px solid red;
+}
+.small_div_text_info{
+    border: 1px solid black;
+    margin: 0;
+    text-align: left;
+    padding: 0;
+}

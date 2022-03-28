@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./weather.css"
+import "./weather.css";
 
 const initState = {
   query: "",
@@ -15,9 +15,9 @@ export const Weather = () => {
     setState({ ...state, query: e.target.value });
   };
 
-  useEffect(() =>{
-      getData()
-  }, [])
+  useEffect(() => {
+    getData();
+  }, []);
 
   const getData = () => {
     axios({
@@ -31,9 +31,11 @@ export const Weather = () => {
     })
       .then((res) => setState({ ...state, info: res.data }))
       .catch((err) => console.log(err))
-      .finally(() =>{setLoading(false)});
-    };
-    console.log(state); 
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  console.log(state);
   return (
     <>
       <input
@@ -43,18 +45,30 @@ export const Weather = () => {
         onChange={handleChange}
       />
       <button onClick={getData}>Search</button>
-      
+
       {loading && <h1>Loading...</h1>}
       <div className="report">
-      
-        {state?.info?.location && 
-        <h2 className="city_name">Location : {state.info?.location?.name}</h2>
-        }
-        {state?.info?.current && 
-        <h4 className="date">{state.info?.current.last_updated}</h4>
-        }
+        {state?.info?.location && (
+          <h2 className="city_name">Location : {state.info?.location?.name}</h2>
+        )}
+        {state?.info?.current && (
+          <h4 className="date">{state.info?.current.last_updated}</h4>
+        )}
 
+        <div className="small_div">
+          {state?.info?.current?.condition?.icon && (
+            <img className="weather_icon" src={state.info?.current?.condition?.icon} alt="image" />
+          )}
+          <div className="small_div_text_info">
+            {state?.info?.current?.condition?.icon && (
+              <p>Atmosphere : {state.info?.current?.condition?.text} </p>
+            )}
+            {state?.info?.current?.condition?.icon && (
+              <p>Temp :- Exact / Feels_like : {state.info?.current?.temp_c} °C /  {state.info?.current?.feelslike_c} °C</p>
+            )}
+          </div>
         </div>
+      </div>
     </>
   );
 };
