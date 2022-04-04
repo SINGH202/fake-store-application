@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContextProvider";
 import { ThemeContext } from "../context/ThemeContextProvider";
+import {useNavigate} from "react-router-dom"
 import { Dashboard } from "./Dashboard";
 import styles from "./Login.module.css";
 
-const Login = () => {
+export const Login = () => {
   const [state, setState] = useState({ email: "", password: "" });
+  let navigate  = useNavigate();
   const { isAuth, err, token, handleAuth } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
   // console.log(theme);
@@ -43,10 +45,8 @@ const Login = () => {
           </form>
           {err && <h1>Wrong Credentials</h1>}
         </>
-      ) : (
-        <Dashboard message={token} />
-      )}
+      ) : navigate("/product")}
     </>
   );
 };
-export { Login };
+// export { Login };

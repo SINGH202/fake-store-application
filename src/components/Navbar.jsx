@@ -24,7 +24,9 @@ const Navbar = () =>{
     return(
         <div style={{backgroundColor:"gray", padding:"20px"}}>
             {links.map(({title, to}, index) =>{
-                return <NavLink key={index} to={to} style={{padding:10, textDecoration:"none"}} activeStyle={{fontWeight:"bold", color:"red"}}>{title}</NavLink>
+                return <NavLink key={index} to={to} style={({isActive}) => ({
+                    color: isActive? "red":"blue"
+                })} >{title}</NavLink>
             })}
         </div>
     )
