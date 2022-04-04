@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/AuthContextProvider";
 import App from "./App";
 import { ThemeContextProvider } from "./context/ThemeContextProvider";
 import { BrowserRouter } from "react-router-dom";
+import RouteComponent from "./Routes/Routes";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
@@ -12,7 +13,7 @@ ReactDOM.render(
     <BrowserRouter>
     <ThemeContextProvider>
       <AuthContextProvider>
-        <App />
+        <RouteComponent />
       </AuthContextProvider>
     </ThemeContextProvider>
     </BrowserRouter>

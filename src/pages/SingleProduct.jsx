@@ -23,7 +23,14 @@ export const SingleProduct = () => {
   return (
     <>
       <h1>Single Product</h1>
-      {data && <h1>{data.title}</h1>}
+      {data && (
+        <div>
+          {" "}
+          <h2>{data.title}</h2>
+          <img src={data.image} alt="" width={"100px"} />
+          <h4>{data.description}</h4>
+        </div>
+      )}
     </>
   );
 };

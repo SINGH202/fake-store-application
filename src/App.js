@@ -4,13 +4,15 @@ import { Login } from "./components/LoginCompoent";
 import { ThemeButton } from "./components/ThemeButton";
 import Navbar from "./components/Navbar";
 import RouteComponent from "./Routes/Routes";
+import { Outlet } from "react-router-dom";
 
 export default function App() {
   return (
     <div className="App">
       {/* <Example /> */}
       <Navbar/>
-      <RouteComponent />
+      <Outlet/>
+      {/* <RouteComponent /> */}
       {/* <Login />
       <ThemeButton /> */}
     </div>

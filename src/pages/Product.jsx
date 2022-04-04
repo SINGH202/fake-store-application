@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 export const Product = () =>{
@@ -15,6 +15,7 @@ export const Product = () =>{
     })
       .then((res) => {
         setData(res.data);
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
@@ -35,6 +36,8 @@ export const Product = () =>{
             {!loading && data && data.map((item) =>{
             return <Link key = {item.id} to={`/products/${item.id}`} >{item.title}</Link>
             })}
+            <hr/>
+        <Outlet/>
         </>
     )
 }

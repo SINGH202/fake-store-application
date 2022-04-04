@@ -5,19 +5,42 @@ import { Home } from "../pages/Home";
 import { Product } from "../pages/Product";
 import { SingleProduct } from "../pages/SingleProduct";
 import { Login } from "../components/Login";
+import App from "../App";
 import { PrivateRoutes } from "./PrivateRoute";
+import { Logout } from "../components/Logout";
 
 const RouteComponent = () => {
-  
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/product" element={<Product />} />
-      <Route path="/products/:productId" element={<SingleProduct/>}/>
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="products" element={<Product />}>
+            <Route path=":productId" element={<SingleProduct />} />
+            <Route index element={<h1>Select Product</h1>} />
+          </Route>
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="logout" element={<Logout />} />
+        <Route path="*" element={<h2>404 Element not found</h2>} />
+      </Route>
     </Routes>
   );
 };
 
 export default RouteComponent;
+
+{
+  /* <Route
+          path="products"
+          element={
+            <PrivateRoutes>
+              <Product />
+            </PrivateRoutes>
+          }
+        >
+          <Route path=":productId" element={<SingleProduct />} />
+          <Route index element={<h1>Select Product</h1>} />
+        </Route> */
+}

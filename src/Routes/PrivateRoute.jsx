@@ -1,22 +1,32 @@
 import React, { useContext } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthContextProvider";
-export const PrivateRoutes = ({path, element, redirectpath="/login"}) =>{
 
-    const {isAuth} = useContext(AuthContext);
-    let navigate = useNavigate();
-    return(
-        <>
-        <Routes>
+export const PrivateRoutes = ({ redirectpath="/login", children}) =>{
+
+    const {token} = useContext(AuthContext);
+    
+    if(!token){
+        return <Navigate to={redirectpath}/>
+    }
+    return children ? children : <Outlet/>;
+    
+}
+
+// const {isAuth} = useContext(AuthContext);
+//     let navigate = useNavigate();
+//     return(
+//         <>
+//         <Routes>
             
         
-            {isAuth ? (
-                <Route path={path} element={element} />
-            ) : (
-                navigate(redirectpath)
-            )
-        }
-        </Routes>
-        </>
-    )
-}
+//             {isAuth ? (
+//                 <Route path={path} element={element} />
+//             ) : (
+//                 navigate(redirectpath)
+//             )
+//         }
+//         </Routes>
+//         </>
+//     )
