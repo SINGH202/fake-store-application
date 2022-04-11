@@ -6,12 +6,13 @@ import { Link, Outlet } from "react-router-dom";
 export const Product = () =>{
     const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const api = "https://bookstroe-backend-server.herokuapp.com/books";
 
   const getProduct = () => {
     setLoading(true);
     axios({
       method: "get",
-      url: "https://fakestoreapi.com/products",
+      url: api,
     })
       .then((res) => {
         setData(res.data);
@@ -33,8 +34,14 @@ export const Product = () =>{
         <>
             <h2>Welcome to Product-Page</h2>
             {loading && <h2>Loading.....</h2>}
-            {!loading && data && data.map((item) =>{
-            return <Link key = {item.id} to={`/products/${item.id}`} >{item.title}</Link>
+            {!loading && data && data.map((item, index) =>{
+              return(<div key={index}>
+              <h3>{item.title}</h3>
+              <img src={item.image} alt="" />
+              <h4>Author : {item.author}</h4>
+              <h5>Price : {item.price}</h5>
+              
+          </div>)
             })}
             <hr/>
         <Outlet/>
