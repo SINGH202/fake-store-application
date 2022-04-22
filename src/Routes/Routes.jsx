@@ -8,6 +8,7 @@ import { Login } from "../components/Login";
 import App from "../App";
 import { PrivateRoutes } from "./PrivateRoute";
 import { Logout } from "../components/Logout";
+import { SignUp } from "../components/SignUp";
 
 const RouteComponent = () => {
   return (
@@ -23,6 +24,7 @@ const RouteComponent = () => {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="logout" element={<Logout />} />
+        <Route path="signup" element={<SignUp/>} />
         <Route path="*" element={<h2>404 Element not found</h2>} />
       </Route>
     </Routes>

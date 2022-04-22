@@ -36,7 +36,7 @@ const Navbar = () =>{
     ]
 
     return(
-        <div style={{backgroundColor:"gray", padding:"20px"}}>
+        <div style={{backgroundColor:"gray", padding:"20px", margin:"0px"}}>
             {links.map(({title, to}, index) =>{
                 return <NavLink key={index} to={to} style={({isActive}) => ({
                     color: isActive? "red":"blue"
